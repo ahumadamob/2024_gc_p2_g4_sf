@@ -17,7 +17,7 @@ public class Reserva {
 	private String fechaFin;
 	// variable de tipo habitacion
 	@ManyToOne
-	@JoinColumn(name = "habitacion_id")
+	@JoinColumn(name = "habitacion")
 	private Habitacion habitacionId;
 	
 	// variable de tipo cliente
