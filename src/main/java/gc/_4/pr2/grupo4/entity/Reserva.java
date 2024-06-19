@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Reserva {
@@ -15,8 +17,9 @@ public class Reserva {
 	private String fechaFin;
 	// variable de tipo habitacion
 	private String habitacionId;
-	// variable de tipo cliente
-	private String clienteId;
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
+	private Cliente cliente;
 	private EstadoReserva estado;
 
 	// Enumeración
@@ -53,13 +56,13 @@ public class Reserva {
 		this.habitacionId = habitacionId;
 	}
 
-	// Variable tipo cliente
-	public String getClienteId() {
-		return clienteId;
+	
+	public Cliente getClienteId() {
+		return cliente;
 	}
 
-	public void setClienteId(String clienteId) {
-		this.clienteId = clienteId;
+	public void setClienteId(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	// Enumeracion

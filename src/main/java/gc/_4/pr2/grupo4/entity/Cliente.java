@@ -1,12 +1,16 @@
 package gc._4.pr2.grupo4.entity;
 
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity 
 public class Cliente {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
@@ -14,6 +18,21 @@ public class Cliente {
 	private String direccion;
 	private String telefono;
 	private String correoElectronico;
+	
+	@OneToMany(mappedBy = "cliente") 
+	private Set<Reserva> reserva;
+	
+	
+		
+	
+	public Set<Reserva> getReserva() {
+		return reserva;
+	}
+
+	public void setReserva(Set<Reserva> reserva) {
+		this.reserva = reserva;
+	}
+
 	public long getId() {
 		return id;
 	}
