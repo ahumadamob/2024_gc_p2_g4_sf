@@ -4,6 +4,8 @@ package gc._4.pr2.grupo4.entity;
 	import jakarta.persistence.GeneratedValue;
 	import jakarta.persistence.GenerationType;
 	import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 	@Entity	
 	
 	public class Factura {
@@ -16,8 +18,14 @@ package gc._4.pr2.grupo4.entity;
 		private Double total;
 		private String detalles;
 		
+		@ManyToOne
+		@JoinColumn(name = "reserva")
+		private Reserva reserva;
+		
+		
 		public Long getId() {
 			return id;
+			
 		}
 		public void setId(Long id) {
 			this.id = id;

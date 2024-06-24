@@ -1,9 +1,12 @@
 package gc._4.pr2.grupo4.entity;
 
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Reserva {
@@ -18,6 +21,11 @@ public class Reserva {
 	// variable de tipo cliente
 	private String clienteId;
 	private EstadoReserva estado;
+	
+	
+	@OneToMany(mappedBy = "reserva")
+
+	private Set <Factura> factura;
 
 	// Enumeración
 	public enum EstadoReserva {
