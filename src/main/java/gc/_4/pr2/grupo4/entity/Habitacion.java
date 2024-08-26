@@ -17,7 +17,7 @@ public class Habitacion {
 	private String tipo;
 	private double precioPorNoche;
 	private String estado;
-	@OneToMany(mappedBy="habitacionId") 
+	@OneToMany(mappedBy="habitacion") 
 	private Set<Reserva> reserva;
 	
 	

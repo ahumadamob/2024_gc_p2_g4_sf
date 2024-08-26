@@ -18,7 +18,7 @@ public class Reserva {
 	// variable de tipo habitacion
 	@ManyToOne
 	@JoinColumn(name = "habitacion")
-	private Habitacion habitacionId;
+	private Habitacion habitacion;
 	
 	// variable de tipo cliente
 	private String clienteId;
@@ -50,12 +50,12 @@ public class Reserva {
 	}
 
 	// Variable tipo habitacion
-	public Habitacion getHabitacionId() {
-		return habitacionId;
+	public Habitacion getHabitacion() {
+		return habitacion;
 	}
 
-	public void setHabitacionId(Habitacion habitacionId) {
-		this.habitacionId = habitacionId;
+	public void setHabitacion(Habitacion habitacion) {
+		this.habitacion = habitacion;
 	}
 
 	// Variable tipo cliente
