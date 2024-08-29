@@ -20,9 +20,6 @@ public class HabitacionController {
 	@Autowired
 	private IHabitacionService service;
 	
-	/*
-		
-		public abstract Habitacion update(Habitacion habitacion, Long id);*/
 	
 	@GetMapping("/todasHabitaciones")
 	public List<Habitacion> mostrarTodo(){
