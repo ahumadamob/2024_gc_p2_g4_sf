@@ -26,13 +26,7 @@ public class HabitacionServiceImpl implements IHabitacionService {
 
 	@Override
 	public Habitacion getById(Long id) {
-		Optional <Habitacion> optional; // El optional debe ser del tipo Habitacion <>
-		optional = repositoryHabitacion.findById(id);
-		if (optional.isPresent()) {
-			return optional.get();
-		}else {
-			return null;
-		}
+	return repositoryHabitacion.findById(id).orElse(null);
 	}
 
 	@Override
@@ -46,22 +40,6 @@ public class HabitacionServiceImpl implements IHabitacionService {
 		
 	}
 
-	@Override
-	public Habitacion update(Habitacion habitacion, Long id) {
-		Optional<Habitacion> optional = repositoryHabitacion.findById(id);
-		if (optional.isPresent()) {
-			optional.get().setNumero(habitacion.getNumero());
-			optional.get().setTipo(habitacion.getTipo());
-			optional.get().setPrecioPorNoche(habitacion.getPrecioPorNoche());
-			optional.get().setEstado(habitacion.getEstado());
-			optional.get().setReserva(habitacion.getReserva());
-			return save(optional.get());
-		}else {
-			return null;
-		}
-		
-	}
-	
 	
 
 }

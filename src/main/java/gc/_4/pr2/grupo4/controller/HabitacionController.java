@@ -31,8 +31,8 @@ public class HabitacionController {
 	public Habitacion mostrarById(@PathVariable("id") Long id ) {
 		return service.getById(id);
 	}
+
 	
-	// NOTA: necesito la anotacion @RequestBody para efectivamente pasarle el objeto creado por el cliente
 	@PostMapping("/nuevaHabitacion")
 	public Habitacion guardarHabitacion(@RequestBody Habitacion habitacion) {
 			return service.save(habitacion);
@@ -46,7 +46,19 @@ public class HabitacionController {
 	}
 	
 	@PutMapping("/actualizaHabitacion/{id}")
-	public Habitacion actualiza(@RequestBody Habitacion habitacion, @PathVariable("id") Long id) {
-		return service.update(habitacion, id);
+	public Habitacion actualiza(@RequestBody Habitacion habitacion, @PathVariable Long id) {
+		Habitacion habitacionExistente = service.getById(id);
+		
+		if(habitacionExistente != null) {
+			habitacionExistente.setNumero(habitacion.getNumero());
+			habitacionExistente.setTipo(habitacion.getTipo());
+			habitacionExistente.setPrecioPorNoche(habitacion.getPrecioPorNoche());
+			habitacionExistente.setEstado(habitacion.getEstado());
+			habitacionExistente.setReserva(habitacion.getReserva());
+			return service.save(habitacionExistente);
+		} else {
+			return null;
+		}
+	
 	}
 }

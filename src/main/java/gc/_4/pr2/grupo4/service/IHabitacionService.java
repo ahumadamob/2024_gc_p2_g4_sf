@@ -13,5 +13,5 @@ public interface IHabitacionService {
 	public abstract Habitacion getById(Long id);
 	public abstract Habitacion save(Habitacion habitacion);
 	public abstract void delete(Long id);
-	public abstract Habitacion update(Habitacion habitacion, Long id);
+	
 }
