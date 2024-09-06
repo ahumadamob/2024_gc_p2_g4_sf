@@ -40,6 +40,4 @@ public class HabitacionServiceImpl implements IHabitacionService {
 		
 	}
 
-	
-
 }

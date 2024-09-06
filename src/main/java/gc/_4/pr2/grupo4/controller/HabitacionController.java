@@ -31,11 +31,10 @@ public class HabitacionController {
 	public Habitacion mostrarById(@PathVariable("id") Long id ) {
 		return service.getById(id);
 	}
-
 	
 	@PostMapping("/nuevaHabitacion")
 	public Habitacion guardarHabitacion(@RequestBody Habitacion habitacion) {
-			return service.save(habitacion);
+		return service.save(habitacion);
 	}
 	
 	@DeleteMapping("borrarHabitacion/{id}")
@@ -45,20 +44,8 @@ public class HabitacionController {
 		return respuesta;
 	}
 	
-	@PutMapping("/actualizaHabitacion/{id}")
-	public Habitacion actualiza(@RequestBody Habitacion habitacion, @PathVariable Long id) {
-		Habitacion habitacionExistente = service.getById(id);
-		
-		if(habitacionExistente != null) {
-			habitacionExistente.setNumero(habitacion.getNumero());
-			habitacionExistente.setTipo(habitacion.getTipo());
-			habitacionExistente.setPrecioPorNoche(habitacion.getPrecioPorNoche());
-			habitacionExistente.setEstado(habitacion.getEstado());
-			habitacionExistente.setReserva(habitacion.getReserva());
-			return service.save(habitacionExistente);
-		} else {
-			return null;
-		}
-	
+	@PutMapping("/actualizaHabitacion")
+	public Habitacion actualiza(@RequestBody Habitacion habitacion) {
+	   return service.save(habitacion);
 	}
 }
