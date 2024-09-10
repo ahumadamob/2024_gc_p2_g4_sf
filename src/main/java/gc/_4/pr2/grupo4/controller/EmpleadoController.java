@@ -16,9 +16,7 @@ import gc._4.pr2.grupo4.entity.Empleado;
 import gc._4.pr2.grupo4.service.IEmpleadoService;
 
 @RestController
-@RequestMapping 
-
-
+@RequestMapping ("/empleados")
 public class EmpleadoController {
 	@Autowired
 	private IEmpleadoService empleadoService;
@@ -28,17 +26,17 @@ public class EmpleadoController {
 		return empleadoService.guardarEmpleado(empleado);
 	}
 	
-	@GetMapping
+	@GetMapping 
 	public List<Empleado> listarEmpleados(){
 		return empleadoService.obtenerTodosLosEmpleados();
 	}
 	
-	@GetMapping
+	@GetMapping("/{id}")
 	public Empleado obtenerEmpleadoPorId(@PathVariable Long id) {
 		return empleadoService.obtenerEmpleadoPorId(id).orElse(null);
 	}
-	//endpoint para actualizar un empleado existente
-	@PutMapping
+	
+	@PutMapping("/{id}")
 	public Empleado actualizarEmpelado(@PathVariable Long id, @RequestBody Empleado empleado) {
 		Empleado empleadoExiste = empleadoService.obtenerEmpleadoPorId(id).orElse(null);
 		if (empleadoExiste !=null) {
@@ -54,7 +52,7 @@ public class EmpleadoController {
 	}
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("/{id}")
 	public void eliminarEmpleado(@PathVariable Long id) {
 		empleadoService.eliminarEmpleado(id);
 		
