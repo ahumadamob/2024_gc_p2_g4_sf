@@ -27,7 +27,7 @@ public class HabitacionController {
 	}
 	
 	
-	@GetMapping("habitacion/{id}")
+	@GetMapping("/habitacion/{id}")
 	public Habitacion mostrarById(@PathVariable("id") Long id ) {
 		return service.getById(id);
 	}
@@ -37,11 +37,11 @@ public class HabitacionController {
 		return service.save(habitacion);
 	}
 	
-	@DeleteMapping("borrarHabitacion/{id}")
+	@DeleteMapping("/borrarHabitacion/{id}")
 	public String borrarById(@PathVariable("id") Long id) {
 		service.delete(id);
-		String respuesta = "Se borro correctamente el id: " + id.toString();
-		return respuesta;
+		return  "Se borro correctamente el id: " + id.toString();
+		 
 	}
 	
 	@PutMapping("/actualizaHabitacion")
