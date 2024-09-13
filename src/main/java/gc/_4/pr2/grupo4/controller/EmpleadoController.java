@@ -9,52 +9,39 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import gc._4.pr2.grupo4.entity.Empleado;
-import gc._4.pr2.grupo4.service.IEmpleadoService;
+import gc._4.pr2.grupo4.service.jpa.EmpleadoServiceImpl;
 
 @RestController
-@RequestMapping ("/empleados")
 public class EmpleadoController {
 	@Autowired
-	private IEmpleadoService empleadoService;
+	private EmpleadoServiceImpl empleadoService;
 	
-	@PostMapping
-	public Empleado crearEmpleado(@RequestBody Empleado empleado) {
-		return empleadoService.guardarEmpleado(empleado);
+	@GetMapping ("/empleado")
+	public List<Empleado> mostrarTodosLosEmpleados(){
+		return empleadoService.mostrarTodos();
 	}
 	
-	@GetMapping 
-	public List<Empleado> listarEmpleados(){
-		return empleadoService.obtenerTodosLosEmpleados();
+	@GetMapping("/mesa/{id}")
+	Empleado mostrarEmpleadoPorId(@PathVariable("id") Long id) {
+		return empleadoService.mostrarPorId(id);
 	}
 	
-	@GetMapping("/{id}")
-	public Empleado obtenerEmpleadoPorId(@PathVariable Long id) {
-		return empleadoService.obtenerEmpleadoPorId(id).orElse(null);
+	@PostMapping("/empleado")
+	public Empleado crearNuevoEmpleado(@RequestBody Empleado empleadoDesdeElServicio) {
+		return empleadoService.guardar(empleadoDesdeElServicio);
 	}
 	
-	@PutMapping("/{id}")
-	public Empleado actualizarEmpelado(@PathVariable Long id, @RequestBody Empleado empleado) {
-		Empleado empleadoExiste = empleadoService.obtenerEmpleadoPorId(id).orElse(null);
-		if (empleadoExiste !=null) {
-			empleadoExiste.setNombre(empleado.getNombre());
-			empleadoExiste.setCargo(empleado.getCargo());
-			empleadoExiste.setNumeroIdentificacion(empleado.getNumeroIdentificacion());
-			empleadoExiste.setSalario(empleado.getSalario());
-			empleadoExiste.setFechaContratacion(empleado.getFechaContratacion());
-			return empleadoService.guardarEmpleado(empleadoExiste);
-		}else {
-		return null;
-		
-	}
+	@PutMapping("/empleado")
+	Empleado actualizarNuevoEmpleado(@RequestBody Empleado empleadoDesdeElServicio) {
+		return empleadoService.guardar(empleadoDesdeElServicio);
 	}
 	
-	@DeleteMapping("/{id}")
-	public void eliminarEmpleado(@PathVariable Long id) {
-		empleadoService.eliminarEmpleado(id);
+	@DeleteMapping("/empleado/{id}")
+	public void eliminarEmpleado(@PathVariable("id") Long id) {
+		empleadoService.eliminarPorId(id);
 		
 	}
 	

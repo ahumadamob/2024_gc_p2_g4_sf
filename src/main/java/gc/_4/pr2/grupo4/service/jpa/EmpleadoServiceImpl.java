@@ -1,43 +1,39 @@
 package gc._4.pr2.grupo4.service.jpa;
 
-
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import gc._4.pr2.grupo4.entity.Empleado;
-import gc._4.pr2.grupo4.repository.EmpleadoRepository;
 import gc._4.pr2.grupo4.service.IEmpleadoService;
+import gc._4.pr2.grupo4.repository.EmpleadoRepository;
 
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EmpleadoServiceImpl implements IEmpleadoService {
 	@Autowired
-	private EmpleadoRepository empleadoRepository;
-	
+	private EmpleadoRepository repo;
+
 	@Override
-	public Empleado guardarEmpleado (Empleado empleado) {
-		return empleadoRepository.save(empleado);
+	public List<Empleado> mostrarTodos() {
+		return repo.findAll();
 	}
-	
+
 	@Override
-	public List<Empleado> obtenerTodosLosEmpleados () {
-		return empleadoRepository.findAll();
+	public Empleado mostrarPorId(Long id) {
+		return repo.findById(id).orElse(null);
 	}
-	
+
 	@Override
-	public Optional<Empleado> obtenerEmpleadoPorId (Long id) {
-		return empleadoRepository.findById(id);
+	public Empleado guardar(Empleado empleado) {
+		return repo.save(empleado);
 	}
-	
+
 	@Override
-	public void eliminarEmpleado (Long id) {
-		empleadoRepository.deleteById(id);
+	public void eliminarPorId(Long id) {
+		repo.deleteById(id);
 	}
-	
-	
+
 	
 
-
-}
+	}
