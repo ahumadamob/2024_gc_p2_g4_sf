@@ -21,30 +21,30 @@ public class HabitacionController {
 	private IHabitacionService service;
 	
 	
-	@GetMapping("/todasHabitaciones")
+	@GetMapping("/habitaciones")
 	public List<Habitacion> mostrarTodo(){
 		return service.getAll();
 	}
 	
 	
-	@GetMapping("/habitacion/{id}")
+	@GetMapping("/habitaciones/{id}")
 	public Habitacion mostrarById(@PathVariable("id") Long id ) {
 		return service.getById(id);
 	}
 	
-	@PostMapping("/nuevaHabitacion")
+	@PostMapping("/habitaciones")
 	public Habitacion guardarHabitacion(@RequestBody Habitacion habitacion) {
 		return service.save(habitacion);
 	}
 	
-	@DeleteMapping("/borrarHabitacion/{id}")
+	@DeleteMapping("/habitaciones/{id}")
 	public String borrarById(@PathVariable("id") Long id) {
 		service.delete(id);
 		return  "Se borro correctamente el id: " + id.toString();
 		 
 	}
 	
-	@PutMapping("/actualizaHabitacion")
+	@PutMapping("/habitaciones")
 	public Habitacion actualiza(@RequestBody Habitacion habitacion) {
 	   return service.save(habitacion);
 	}
