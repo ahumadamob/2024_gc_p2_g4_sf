@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,6 +44,10 @@ public class ServicioController {
 	void borrarServicio (@PathVariable("id")  Long id) {
 		service.deleteById(id);
 		
+	}
+	@PutMapping("/servicios")
+	public Servicio modificaNuevoServicio(@RequestBody Servicio servicioDesdeService ) {
+		return service.save(servicioDesdeService);
 	}
 	
 	
