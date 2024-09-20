@@ -46,7 +46,7 @@ public class ServicioController {
 		
 	}
 	@PutMapping("/servicios")
-	public Servicio modificaNuevoServicio(@RequestBody Servicio servicioDesdeService ) {
+	public Servicio modificaServicio(@RequestBody Servicio servicioDesdeService ) {
 		return service.save(servicioDesdeService);
 	}
 	
