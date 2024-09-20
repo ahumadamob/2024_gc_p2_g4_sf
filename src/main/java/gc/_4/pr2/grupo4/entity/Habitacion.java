@@ -1,12 +1,15 @@
 package gc._4.pr2.grupo4.entity;
 
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
-public class Habitaciones {
+public class Habitacion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -14,6 +17,9 @@ public class Habitaciones {
 	private String tipo;
 	private double precioPorNoche;
 	private String estado;
+	@OneToMany(mappedBy="habitacion") 
+	private Set<Reserva> reserva;
+	
 	
 	
 	public int getNumero() {
@@ -44,6 +50,12 @@ public class Habitaciones {
 		return id;
 	}
 	
+	public Set<Reserva> getReserva() {
+		return this.reserva;
+	}
+	public void setReserva(Set<Reserva> reserva) {
+		this.reserva = reserva;
+	}
 	
 
 }
