@@ -1,4 +1,4 @@
-package gc._4.pr2.grupo4.Service;
+package gc._4.pr2.grupo4.service;
 
 import java.util.List;
 
