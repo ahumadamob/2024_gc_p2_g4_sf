@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import gc._4.pr2.grupo4.Service.IClienteService;
+import gc._4.pr2.grupo4.service.IClienteService;
 import gc._4.pr2.grupo4.entity.Cliente;
 
 @RestController
@@ -20,7 +20,7 @@ public class ClienteController {
 	@Autowired
 	private IClienteService service;
 	
-	@GetMapping("/todosClientes")
+	@GetMapping("/cliente")
 
 	public List<Cliente> mostrarTodo(){
 
@@ -36,7 +36,7 @@ public class ClienteController {
 
 	}
 
-	@PostMapping("/nuevoCliente")
+	@PostMapping("/cliente")
 
 	public Cliente guardarCliente(@RequestBody Cliente cliente) {
 
@@ -44,7 +44,7 @@ public class ClienteController {
 
 	}
 
-	@DeleteMapping("/borrarCliente/{id}")
+	@DeleteMapping("/cliente{id}")
 
 	public String borrarById(@PathVariable("id") Long id) {
 
@@ -56,7 +56,7 @@ public class ClienteController {
 
 	}
 
-	@PutMapping("/actualizaCliente")
+	@PutMapping("/cliente")
 
 	public Cliente actualiza(@RequestBody Cliente cliente) {
 

@@ -1,4 +1,4 @@
-package gc._4.pr2.grupo4.Service.jpa;
+package gc._4.pr2.grupo4.service.jpa;
 
 
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import gc._4.pr2.grupo4.Service.IClienteService;
+import gc._4.pr2.grupo4.service.IClienteService;
 import gc._4.pr2.grupo4.entity.Cliente;
 import gc._4.pr2.grupo4.repository.ClienteRepository;
 
