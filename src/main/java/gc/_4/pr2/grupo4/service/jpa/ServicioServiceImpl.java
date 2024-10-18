@@ -43,6 +43,13 @@ public class ServicioServiceImpl implements IServicioService{
 		repositoryServicio.deleteById(id);
 	}
 
-
+	@Override
+	public boolean exists(Long id) {
+		if (id != null) {
+			return repositoryServicio.existsById(id);
+		} else {
+			return false;
+		}
+	}
 
 }
