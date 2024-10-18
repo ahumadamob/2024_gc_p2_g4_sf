@@ -16,7 +16,7 @@ public class Servicio {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	private String nombre;
 	private String descripcion;
 	private double precio;
@@ -41,7 +41,7 @@ public class Servicio {
 		this.empleados = empleado;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
