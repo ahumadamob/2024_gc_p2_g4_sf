@@ -1,30 +1,57 @@
 package gc._4.pr2.grupo4.dto;
 
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class ResponseDto<T> {
 	
 	
-	//Este atributo esta encapsulado, ya que solo podremos acceder a el a travez de sus getters and Setters
+	
 	private boolean estado;
-	private String message;
+	private List<String> message;
 	private T data;
 	
 	
 	
-	//Este es el metodo get del encapsulamiento de estado
+	
+	
+	
+	
+	public ResponseDto(boolean estado, List<String> message, T data) {
+		super();
+		this.estado = estado;
+		this.message = message;
+		this.data = data;
+	}
+
+	public ResponseDto(boolean estado, String message, T data) {
+		super();
+		this.estado = estado;		
+		this.message = new ArrayList<>();
+		this.message.add(message);
+		this.data = data;
+	}
+	
+	public ResponseDto(boolean estado, String message) {
+		super();
+		this.estado = estado;
+		this.message = new ArrayList<>();
+		this.message.add(message);
+	}
+
+
+
 	public boolean isEstado() {
 		return estado;
 	}
 	
-	//Este es el metodo set de encapsulamiento de estado
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
-	public String getMessage() {
+	public List<String> getMessage() {
 		return message;
 	}
-	public void setMessage(String message) {
+	public void setMessage(List<String> message) {
 		this.message = message;
 	}
 	public T getData() {

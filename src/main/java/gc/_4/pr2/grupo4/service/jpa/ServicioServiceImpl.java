@@ -39,17 +39,13 @@ public class ServicioServiceImpl implements IServicioService{
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
 		repositoryServicio.deleteById(id);
 	}
 
 	@Override
 	public boolean exists(Long id) {
-		if (id != null) {
-			return repositoryServicio.existsById(id);
-		} else {
-			return false;
-		}
+		
+		return id!=null ? repositoryServicio.existsById(id) : false;
 	}
 
 }
