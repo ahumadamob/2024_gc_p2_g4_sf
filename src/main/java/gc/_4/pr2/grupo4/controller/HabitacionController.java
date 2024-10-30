@@ -40,13 +40,14 @@ public class HabitacionController {
 		
 		//Vamos a obtener todo lo que este persistido
 		list = service.getAll();
-		
+		List<String> mensaje= new ArrayList<>();
 			if(!list.isEmpty()) {
-			
+		
 			//Como la lista contiene datos entonces los retornamos con mensaje exitoso
 			//Primero preparamos DTO 
 			response.setEstado(true);
-			response.setMessage("Listado completo de Habitaciones");
+			mensaje.add("Lista completa de habitaciones");
+			response.setMessage(mensaje);
 			response.setData(list);
 			
 			//Instanciamos el ResponseEntity que vamos a retornar, con los parametros ResponseDto y el codigo correspondiente
@@ -59,7 +60,8 @@ public class HabitacionController {
 			//Como la lista esta vacia, retornamos con mensaje de error
 			//Primero preparamos DTO
 			response.setEstado(false);
-			response.setMessage("No existe listado de Habitaciones");
+			mensaje.add("No existe listado de Habitaciones");
+			response.setMessage(mensaje);
 			response.setData(null); //esta linea es innecesaria ya que al instanciarlo ya esta en null
 			
 			//Instanciamos el ResponseEntity que vamos a retornar, con los parametros ResponseDto y el codigo correspondiente
@@ -78,6 +80,7 @@ public class HabitacionController {
 		
 		//Primero Instanciamos nuesto ResponseDto
 		ResponseDto<Habitacion> response = new ResponseDto<>();
+		List<String> mensaje= new ArrayList<>();
 		
 		if(service.exists(id)) {
 			
@@ -86,7 +89,8 @@ public class HabitacionController {
 			
 			//Preparamos nuestro DTO
 			response.setEstado(true);
-			response.setMessage("La habitacion con id: " + id.toString() + " ha sido encontrada");
+			mensaje.add("La habitacion con id: " + id.toString() + " ha sido encontrada");
+			response.setMessage(mensaje);
 			response.setData(habitacion);
 			
 			//Instanciamos Nuestro ResponseEntity
@@ -98,7 +102,8 @@ public class HabitacionController {
 		}else {
 			//Preparamos nuestro DTO
 			response.setEstado(false);
-			response.setMessage("La habitacion con id: " + id.toString() + " no existe");
+			mensaje.add("La habitacion con id: " + id.toString() + " no existe");
+			response.setMessage(mensaje);
 			response.setData(null);//linea innecesaria, el object ya esta en null
 			
 			//Instanciamos Nuestro ResponseEntity
@@ -115,6 +120,7 @@ public class HabitacionController {
 		
 		//Primero Instanciamos nuesto ResponseDto
 		ResponseDto<Habitacion> response = new ResponseDto<>();
+		List<String> mensaje= new ArrayList<>();
 		
 		if(habitacion.getId()==null ) {
 			
@@ -122,7 +128,8 @@ public class HabitacionController {
 			
 			//Preparamos nuestro DTO
 			response.setEstado(true);
-			response.setMessage("Nueva habitacion creada");
+			mensaje.add("Nueva habitacion creada");
+			response.setMessage(mensaje);
 			response.setData(habitacionPersistida);
 			
 			//Instanciamos Nuestro ResponseEntity
@@ -139,7 +146,8 @@ public class HabitacionController {
 			
 			// Preparamos nuestro DTO
 			response.setEstado(false);
-			response.setMessage("La habitacion con id: " + habitacion.getId()  + " ya existe");
+			mensaje.add("La habitacion con id: " + habitacion.getId()  + " ya existe");
+			response.setMessage(mensaje);
 			response.setData(service.getById(habitacion.getId()));
 			
 			
@@ -154,7 +162,8 @@ public class HabitacionController {
 				
 				// Preparamos nuestro DTO
 				response.setEstado(false);
-				response.setMessage("Peticion erronea, enviar nuevamente sin ID");
+				mensaje.add("Peticion erronea, enviar nuevamente sin ID");
+				response.setMessage(mensaje);
 				response.setData(null);
 				
 				// Instanciamos Nuestro ResponseEntity
@@ -173,6 +182,7 @@ public class HabitacionController {
 		
 		//Primero Instanciamos nuesto ResponseDto
 		ResponseDto<Habitacion> response = new ResponseDto<>();
+		List<String> mensaje= new ArrayList<>();
 		
 		if(service.exists(habitacion.getId())) {
 			
@@ -182,7 +192,8 @@ public class HabitacionController {
 					
 				// Preparamos nuestro DTO
 				response.setEstado(true);
-				response.setMessage("Servicio con id: " + habitacion.getId() + " actualizado");
+				mensaje.add("Servicio con id: " + habitacion.getId() + " actualizado");
+				response.setMessage(mensaje);
 				response.setData(habitacionPersistida);
 				
 				//Instanciamos Nuestro ResponseEntity
@@ -195,7 +206,8 @@ public class HabitacionController {
 			
 			// Preparamos nuestro DTO
 			response.setEstado(false);
-			response.setMessage("Para actualizar un Servicio ingrese un ID valido");
+			mensaje.add("Para actualizar un Servicio ingrese un ID valido");
+			response.setMessage(mensaje);
 			response.setData(null);
 			
 			//Instanciamos Nuestro ResponseEntity
@@ -213,6 +225,7 @@ public class HabitacionController {
 		
 		//Primero Instanciamos nuesto ResponseDto
 		ResponseDto<Habitacion> response = new ResponseDto<>();
+		List<String> mensaje= new ArrayList<>();
 		
 		//comprobamos que dicho id exista
 		
@@ -223,7 +236,8 @@ public class HabitacionController {
 			
 			//Preparamos el DTO
 			response.setEstado(true);
-			response.setMessage("Servicio con id: " + id.toString() + " Eliminado");
+			mensaje.add("Servicio con id: " + id.toString() + " Eliminado");
+			response.setMessage(mensaje);
 			response.setData(null);
 			
 			//Instanciamos Nuestro ResponseEntity
@@ -236,7 +250,8 @@ public class HabitacionController {
 			
 			//Preparamos el DTO
 			response.setEstado(false);
-			response.setMessage("Servicio con id: " + id.toString() + " No existe");
+			mensaje.add("Servicio con id: " + id.toString() + " No existe");
+			response.setMessage(mensaje);
 			response.setData(null);
 			
 			//Instanciamos Nuestro ResponseEntity
