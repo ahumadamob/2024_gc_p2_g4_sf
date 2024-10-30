@@ -1,5 +1,6 @@
 package gc._4.pr2.grupo4.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +10,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import gc._4.pr2.grupo4.service.IClienteService;
+import gc._4.pr2.grupo4.dto.ResponseDto;
 import gc._4.pr2.grupo4.entity.Cliente;
 
 @RestController
+
 public class ClienteController {
 
 	@Autowired
@@ -22,45 +26,78 @@ public class ClienteController {
 	
 	@GetMapping("/cliente")
 
-	public List<Cliente> mostrarTodo(){
+	public ResponseDto<List<Cliente>> buscarTodosLosCliente() {
+		List<Cliente> listaCliente;
+		listaCliente = new ArrayList();
+		listaCliente = service.getAll();
 
-		return service.getAll();
+		ResponseDto<List<Cliente>> dto;
+		dto = new ResponseDto<List<Cliente>>();		
 
+		if(listaCliente.isEmpty()) {
+			dto.setEstado(false);
+			List<String> mensajes = new ArrayList();
+			mensajes.add("No se encontraron clientes");
+			dto.setMensaje(mensajes);
+			dto.setData(null);
+		}else {
+			List<String> mensajes = new ArrayList();
+			mensajes.add("Se encontraron los siguientes clientes");
+			dto.setEstado(true);
+			dto.setMensaje(mensajes);
+			dto.setData(listaCliente);
+		}		
+		return dto;
 	}
+
 
 	@GetMapping("/cliente/{id}")
 
-	public Cliente mostrarById(@PathVariable("id") Long id ) {
-
-		return service.getById(id);
-
+	public ResponseDto <Cliente> buscarPorId(@PathVariable("id") Long id) {
+		if (service.exists(id)) {
+			Cliente cliente = new Cliente ();
+			cliente = service.getById(id);
+			ResponseDto <Cliente> dto;
+			dto = new ResponseDto <Cliente> (true, "OK",cliente);
+			return dto;
+		}else {
+			return new ResponseDto <Cliente> (false, "No existe un cliente con esa ID",null);
+		}
 	}
 
 	@PostMapping("/cliente")
 
-	public Cliente guardarCliente(@RequestBody Cliente cliente) {
+	public ResponseDto <Cliente> crearNuevoEmpleado(@RequestBody Cliente clienteDesdeElServicio) {
+		if (service.exists(clienteDesdeElServicio.getId())) {
+			return new ResponseDto<Cliente>(false, "Este id ya le pertenece a otro cliente",null);
 
-		return service.save(cliente);
+		}else {
+			return new ResponseDto<Cliente>(true,"Cliente creado con exito",service.save(clienteDesdeElServicio));
+		}
 
 	}
 
-	@DeleteMapping("/cliente{id}")
+	@DeleteMapping("/cliente/{id}")
 
-	public String borrarById(@PathVariable("id") Long id) {
+	public ResponseDto <?> delete(@PathVariable("id") Long id) {
+		if (service.exists(id)) {
+			service.delete(id);
+			return new ResponseDto<>(true,"Cliente eliminado con ID" + id.toString(), null);
+		}else{
+			return new ResponseDto<>(false,"No se encontro ID" + id.toString(),null);
 
-		service.delete(id);
-
-		String respuesta = "Se borro correctamente el Cliente por id: " + id.toString();
-
-		return respuesta;
-
+		}
 	}
 
 	@PutMapping("/cliente")
 
-	public Cliente actualiza(@RequestBody Cliente cliente) {
+	public ResponseDto <Cliente> actualizarNuevoCliente(@RequestBody Cliente clienteDesdeElServicio) {
+		if (service.exists(clienteDesdeElServicio.getId())) {
+			return new ResponseDto<Cliente>(true, "Empleado actualizado con exito",service.save(clienteDesdeElServicio));
 
-	   return service.save(cliente);
+		}else {
+			return new ResponseDto<Cliente>(false,"ID no encontrado" + clienteDesdeElServicio.getId().toString(),null);
+		}
 
 	}
 

@@ -9,12 +9,12 @@ import jakarta.persistence.Id;
 public class Cliente{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	private String nombre;
 	private String direccion;
 	private String telefono;
 	private String correoElectronico;
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	

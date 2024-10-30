@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResponseDto<T> {
-	
-	
-	//Este atributo esta encapsulado, ya que solo podremos acceder a el a travez de sus getters and Setters
+
 	private boolean estado;
 	private List<String> message;
 	private T data;
@@ -59,9 +57,7 @@ public class ResponseDto<T> {
 	}
 
 	public void setData(T data) {
-		this.data=data;
+		this.data = data;
 	}
-	
-	
 
 }

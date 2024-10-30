@@ -6,8 +6,9 @@ import gc._4.pr2.grupo4.entity.Empleado;
 
 public interface IEmpleadoService {
 
-	public List <Empleado> mostrarTodos();
-	public Empleado mostrarPorId (Long id);
-	public Empleado guardar(Empleado empleado);
-	public void eliminarPorId(Long id);
+	public abstract List <Empleado> getAll();
+	public abstract Empleado getById (Long id);
+	public abstract Empleado save (Empleado empleado);
+	public abstract void delete (Long id);
+	public abstract boolean exists(Long id);
 }
