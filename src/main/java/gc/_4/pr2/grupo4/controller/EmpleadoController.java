@@ -40,13 +40,13 @@ public class EmpleadoController {
 			dto.setEstado(false);
 			List<String> mensajes = new ArrayList();
 			mensajes.add("No se encontraron empleados");
-			dto.setMensaje(mensajes);
+			dto.setMessage(mensajes);
 			dto.setData(null);
 		}else {
 			List<String> mensajes = new ArrayList();
 			mensajes.add("Se encontraron los siguientes empleados");
 			dto.setEstado(true);
-			dto.setMensaje(mensajes);
+			dto.setMessage(mensajes);
 			dto.setData(listaEmpleado);
 		}		
 		return dto;
