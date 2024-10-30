@@ -38,13 +38,13 @@ public class ClienteController {
 			dto.setEstado(false);
 			List<String> mensajes = new ArrayList();
 			mensajes.add("No se encontraron clientes");
-			dto.setMensaje(mensajes);
+			dto.setMessage(mensajes);
 			dto.setData(null);
 		}else {
 			List<String> mensajes = new ArrayList();
 			mensajes.add("Se encontraron los siguientes clientes");
 			dto.setEstado(true);
-			dto.setMensaje(mensajes);
+			dto.setMessage(mensajes);
 			dto.setData(listaCliente);
 		}		
 		return dto;
