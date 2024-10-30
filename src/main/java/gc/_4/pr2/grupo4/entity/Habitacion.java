@@ -8,11 +8,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
+
+
+
+
+
+
+
 @Entity
 public class Habitacion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	private int numero;
 	private String tipo;
 	private double precioPorNoche;
@@ -46,7 +53,7 @@ public class Habitacion {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	

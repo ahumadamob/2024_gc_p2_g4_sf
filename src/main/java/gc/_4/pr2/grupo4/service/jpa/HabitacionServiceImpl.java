@@ -40,4 +40,12 @@ public class HabitacionServiceImpl implements IHabitacionService {
 		
 	}
 
+	@Override
+	public boolean exists(Long id) {
+		if (id != null) {
+			return repositoryHabitacion.existsById(id);
+		} else {
+			return false;
+		}
+	}
 }
