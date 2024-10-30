@@ -15,25 +15,32 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 	private EmpleadoRepository repo;
 
 	@Override
-	public List<Empleado> mostrarTodos() {
+	public List<Empleado> getAll() {
 		return repo.findAll();
 	}
 
 	@Override
-	public Empleado mostrarPorId(Long id) {
+	public Empleado getById(Long id) {
 		return repo.findById(id).orElse(null);
 	}
 
 	@Override
-	public Empleado guardar(Empleado empleado) {
+	public Empleado save(Empleado empleado) {
 		return repo.save(empleado);
 	}
 
 	@Override
-	public void eliminarPorId(Long id) {
+	public void delete(Long id) {
 		repo.deleteById(id);
 	}
 
-	
+	@Override 
+	public boolean exists(Long id) {
+		if (id != null) {
+			return repo.existsById(id);
+		}else{
+			return false;
+		}
+	}
 
 	}
