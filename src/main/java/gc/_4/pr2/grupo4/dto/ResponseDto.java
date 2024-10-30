@@ -9,6 +9,11 @@ public class ResponseDto<T> {
 	private List<String> message;
 	private T data;
 
+	public ResponseDto() {
+		
+	}
+	
+	
 	public ResponseDto(boolean estado, List<String> message, T data) {
 		super();
 		this.estado = estado;
