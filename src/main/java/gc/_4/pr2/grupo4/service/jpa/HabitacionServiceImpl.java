@@ -54,20 +54,7 @@ public class HabitacionServiceImpl implements IHabitacionService {
 	@Override
 	public List<Habitacion> findByDisponible(boolean disponible) {
 		
-		//recibo todos los objetos persistidos
-		List<Habitacion> lista = repositoryHabitacion.findAll();
-		
-		//creo la lista que voy a retornar
-		List<Habitacion> list = new ArrayList();
-		
-		//itero para seleccionar los que sean igual a disponible
-		lista.forEach(habitacion -> {
-			if (habitacion.isDisponible() == disponible) {
-				list.add(habitacion);
-			}
-		});
-		
-		return list;
+	return repositoryHabitacion.findByDisponible(disponible);
 		
 	}
 }

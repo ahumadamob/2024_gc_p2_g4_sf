@@ -38,6 +38,7 @@ public class HabitacionController {
 	
 	public ResponseEntity<ResponseDto<List<Habitacion>>> findByDisponibilidad(){	
 				
+	
 	return !service.findByDisponible(true).isEmpty()
 						? new ResponseEntity<>(new ResponseDto<List<Habitacion>>(true, "Listado completo de Habitaciones disponibles", service.findByDisponible(true)),HttpStatus.OK)
 						: new ResponseEntity<>(new ResponseDto<>(false, "No existe listado de Servicio", service.getAll()),HttpStatus.NOT_FOUND);
