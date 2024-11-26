@@ -1,5 +1,6 @@
 package gc._4.pr2.grupo4.service.jpa;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -47,5 +48,13 @@ public class HabitacionServiceImpl implements IHabitacionService {
 		} else {
 			return false;
 		}
+	}
+
+	// implementacion del nuevo metodo
+	@Override
+	public List<Habitacion> findByDisponible(boolean disponible) {
+		
+	return repositoryHabitacion.findByDisponible(disponible);
+		
 	}
 }

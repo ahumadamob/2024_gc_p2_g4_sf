@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import gc._4.pr2.grupo4.dto.ResponseDto;
 import gc._4.pr2.grupo4.entity.Habitacion;
+import gc._4.pr2.grupo4.entity.Servicio;
 import gc._4.pr2.grupo4.service.IHabitacionService;
 import gc._4.pr2.grupo4.service.jpa.HabitacionServiceImpl;
 
@@ -27,6 +28,26 @@ public class HabitacionController {
 
 	@Autowired
 	private IHabitacionService service;
+	
+	
+
+	
+	
+	
+	@GetMapping("/habitaciones/disponibles")
+	
+	public ResponseEntity<ResponseDto<List<Habitacion>>> findByDisponibilidad(){	
+				
+	
+	return !service.findByDisponible(true).isEmpty()
+						? new ResponseEntity<>(new ResponseDto<List<Habitacion>>(true, "Listado completo de Habitaciones disponibles", service.findByDisponible(true)),HttpStatus.OK)
+						: new ResponseEntity<>(new ResponseDto<>(false, "No existe listado de Servicio", service.getAll()),HttpStatus.NOT_FOUND);
+		
+	}
+	
+	
+	
+	
 	
 	
 	@GetMapping("/habitaciones")

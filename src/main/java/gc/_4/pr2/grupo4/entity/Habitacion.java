@@ -9,12 +9,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 
-
-
-
-
-
-
 @Entity
 public class Habitacion {
 	@Id
@@ -26,6 +20,10 @@ public class Habitacion {
 	private String estado;
 	@OneToMany(mappedBy="habitacion") 
 	private Set<Reserva> reserva;
+	
+	//nuevo atributo
+	
+	private boolean disponible;
 	
 	
 	
@@ -62,6 +60,12 @@ public class Habitacion {
 	}
 	public void setReserva(Set<Reserva> reserva) {
 		this.reserva = reserva;
+	}
+	public boolean isDisponible() {
+		return disponible;
+	}
+	public void setDisponible(boolean disponible) {
+		this.disponible = disponible;
 	}
 	
 
