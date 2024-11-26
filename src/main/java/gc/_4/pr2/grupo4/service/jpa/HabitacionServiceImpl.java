@@ -1,5 +1,6 @@
 package gc._4.pr2.grupo4.service.jpa;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -47,5 +48,26 @@ public class HabitacionServiceImpl implements IHabitacionService {
 		} else {
 			return false;
 		}
+	}
+
+	// implementacion del nuevo metodo
+	@Override
+	public List<Habitacion> findByDisponible(boolean disponible) {
+		
+		//recibo todos los objetos persistidos
+		List<Habitacion> lista = repositoryHabitacion.findAll();
+		
+		//creo la lista que voy a retornar
+		List<Habitacion> list = new ArrayList();
+		
+		//itero para seleccionar los que sean igual a disponible
+		lista.forEach(habitacion -> {
+			if (habitacion.isDisponible() == disponible) {
+				list.add(habitacion);
+			}
+		});
+		
+		return list;
+		
 	}
 }
