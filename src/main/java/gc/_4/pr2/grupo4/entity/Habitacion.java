@@ -26,6 +26,7 @@ public class Habitacion {
 	private String estado;
 	@OneToMany(mappedBy="habitacion") 
 	private Set<Reserva> reserva;
+	private double disponible;
 	
 	
 	
@@ -62,6 +63,12 @@ public class Habitacion {
 	}
 	public void setReserva(Set<Reserva> reserva) {
 		this.reserva = reserva;
+	}
+	public double getDisponible() {
+		return disponible;
+	}
+	public void setDisponible(double disponible) {
+		this.disponible = disponible;
 	}
 	
 

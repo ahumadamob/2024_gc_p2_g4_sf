@@ -48,4 +48,22 @@ public class HabitacionServiceImpl implements IHabitacionService {
 			return false;
 		}
 	}
+
+	@Override
+	public List<Habitacion> findByDisponible(boolean disponible) {
+
+		return repositoryHabitacion.findByDisponible(disponible);
+
+		}
+
+
+
+
+
+	
+	
+
+	
 }
+
+
