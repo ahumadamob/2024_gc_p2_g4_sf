@@ -8,7 +8,7 @@ public class ResponseDto<T> {
 	private boolean estado;
 	private List<String> message;
 	private T data;
-	private boolean disponible;
+	
 
 	public ResponseDto() {
 		
@@ -20,7 +20,7 @@ public class ResponseDto<T> {
 		this.estado = estado;
 		this.message = message;
 		this.data = data;
-		this.setDisponible(disponible);
+		
 	}
 
 	public ResponseDto(boolean estado, String message, T data, boolean disponible) {
@@ -29,7 +29,7 @@ public class ResponseDto<T> {
 		this.message = new ArrayList<>();
 		this.message.add(message);
 		this.data = data;
-		this.setDisponible(disponible);
+		
 	}
 
 	public ResponseDto(boolean estado, String message, boolean disponible) {
@@ -37,7 +37,7 @@ public class ResponseDto<T> {
 		this.estado = estado;
 		this.message = new ArrayList<>();
 		this.message.add(message);
-		this.setDisponible(disponible);
+		
 	}
 
 	public boolean isEstado() {
@@ -65,13 +65,6 @@ public class ResponseDto<T> {
 	}
 
 
-	public boolean isDisponible() {
-		return disponible;
-	}
 
-
-	public void setDisponible(boolean disponible) {
-		this.disponible = disponible;
-	}
 
 }

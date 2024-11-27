@@ -26,7 +26,7 @@ public class Habitacion {
 	private String estado;
 	@OneToMany(mappedBy="habitacion") 
 	private Set<Reserva> reserva;
-	private double disponible;
+	private boolean disponible;
 	
 	
 	
