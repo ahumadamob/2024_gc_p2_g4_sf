@@ -271,7 +271,7 @@ public class HabitacionController {
 			mensaje.add("Estas son las habitaciones disponibles");
 			response.setMessage(mensaje);
 			response.setData(null);
-			response.setDisponible(true);
+		
 			
 			ResponseEntity<ResponseDto> finalResponse = new ResponseEntity<>(response,HttpStatus.OK);
 			
@@ -283,7 +283,7 @@ public class HabitacionController {
 			mensaje.add("No existen habitaciones disponibles");
 			response.setMessage(mensaje);
 			response.setData(null);
-			response.setDisponible(true);
+		
 			ResponseEntity<ResponseDto> finalResponse = new ResponseEntity<>(response,HttpStatus.OK);
 			
 			//Finalmente retornamos
