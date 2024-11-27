@@ -64,12 +64,12 @@ public class Habitacion {
 	public void setReserva(Set<Reserva> reserva) {
 		this.reserva = reserva;
 	}
-	public double getDisponible() {
+	public boolean isDisponible() {
 		return disponible;
 	}
-	public void setDisponible(double disponible) {
+	public void setDisponible(boolean disponible) {
 		this.disponible = disponible;
 	}
-	
+
 
 }

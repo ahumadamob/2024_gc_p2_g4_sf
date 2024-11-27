@@ -15,7 +15,7 @@ public class ResponseDto<T> {
 	}
 	
 	
-	public ResponseDto(boolean estado, List<String> message, T data, boolean disponible) {
+	public ResponseDto(boolean estado, List<String> message, T data) {
 		super();
 		this.estado = estado;
 		this.message = message;
@@ -23,7 +23,7 @@ public class ResponseDto<T> {
 		
 	}
 
-	public ResponseDto(boolean estado, String message, T data, boolean disponible) {
+	public ResponseDto(boolean estado, String message, T data) {
 		super();
 		this.estado = estado;
 		this.message = new ArrayList<>();
@@ -32,7 +32,7 @@ public class ResponseDto<T> {
 		
 	}
 
-	public ResponseDto(boolean estado, String message, boolean disponible) {
+	public ResponseDto(boolean estado, String message) {
 		super();
 		this.estado = estado;
 		this.message = new ArrayList<>();
