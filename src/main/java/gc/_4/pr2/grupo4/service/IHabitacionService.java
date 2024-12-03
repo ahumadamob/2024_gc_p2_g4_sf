@@ -16,8 +16,4 @@ public interface IHabitacionService {
 	public abstract boolean exists(Long id);
     public List<Habitacion> findByDisponible(boolean disponible);
 	
-	// Se agrega nuevo metodo para retornar la lista
-	
-	List<Habitacion> findByDisponible(boolean disponible);
-	
 }

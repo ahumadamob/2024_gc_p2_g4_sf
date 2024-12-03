@@ -34,21 +34,13 @@ public class HabitacionController {
 	
 	
 	
-	@GetMapping("/habitaciones/disponibles")
-	
+	@GetMapping("/habitaciones/disponibilidad")	
 	public ResponseEntity<ResponseDto<List<Habitacion>>> findByDisponibilidad(){	
-				
-	
 	return !service.findByDisponible(true).isEmpty()
 						? new ResponseEntity<>(new ResponseDto<List<Habitacion>>(true, "Listado completo de Habitaciones disponibles", service.findByDisponible(true)),HttpStatus.OK)
 						: new ResponseEntity<>(new ResponseDto<>(false, "No existe listado de Servicio", service.getAll()),HttpStatus.NOT_FOUND);
 		
 	}
-	
-	
-	
-	
-	
 	
 	@GetMapping("/habitaciones")
 	
