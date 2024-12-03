@@ -9,12 +9,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 
-
-
-
-
-
-
 @Entity
 public class Habitacion {
 	@Id
@@ -70,6 +64,5 @@ public class Habitacion {
 	public void setDisponible(boolean disponible) {
 		this.disponible = disponible;
 	}
-
 
 }
