@@ -20,9 +20,6 @@ public class Habitacion {
 	private String estado;
 	@OneToMany(mappedBy="habitacion") 
 	private Set<Reserva> reserva;
-	
-	//nuevo atributo
-	
 	private boolean disponible;
 	
 	
@@ -67,6 +64,5 @@ public class Habitacion {
 	public void setDisponible(boolean disponible) {
 		this.disponible = disponible;
 	}
-	
 
 }

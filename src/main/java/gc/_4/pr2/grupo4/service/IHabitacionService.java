@@ -14,9 +14,6 @@ public interface IHabitacionService {
 	public abstract Habitacion save(Habitacion habitacion);
 	public abstract void delete(Long id);
 	public abstract boolean exists(Long id);
-	
-	// Se agrega nuevo metodo para retornar la lista
-	
-	List<Habitacion> findByDisponible(boolean disponible);
+    public List<Habitacion> findByDisponible(boolean disponible);
 	
 }

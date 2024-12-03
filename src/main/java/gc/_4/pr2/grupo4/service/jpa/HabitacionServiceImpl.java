@@ -50,11 +50,19 @@ public class HabitacionServiceImpl implements IHabitacionService {
 		}
 	}
 
-	// implementacion del nuevo metodo
 	@Override
 	public List<Habitacion> findByDisponible(boolean disponible) {
-		
-	return repositoryHabitacion.findByDisponible(disponible);
-		
-	}
+
+		return repositoryHabitacion.findByDisponible(disponible);
+
+		}
+
+
+
+
+
+	
+	
+
+	
 }

@@ -34,21 +34,13 @@ public class HabitacionController {
 	
 	
 	
-	@GetMapping("/habitaciones/disponibles")
-	
+	@GetMapping("/habitaciones/disponibilidad")	
 	public ResponseEntity<ResponseDto<List<Habitacion>>> findByDisponibilidad(){	
-				
-	
 	return !service.findByDisponible(true).isEmpty()
 						? new ResponseEntity<>(new ResponseDto<List<Habitacion>>(true, "Listado completo de Habitaciones disponibles", service.findByDisponible(true)),HttpStatus.OK)
 						: new ResponseEntity<>(new ResponseDto<>(false, "No existe listado de Servicio", service.getAll()),HttpStatus.NOT_FOUND);
 		
 	}
-	
-	
-	
-	
-	
 	
 	@GetMapping("/habitaciones")
 	
@@ -283,11 +275,36 @@ public class HabitacionController {
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
+	@GetMapping ("/habitaciones/disponibles")
+	  public ResponseEntity<ResponseDto> findByDisponible(){
+		  ResponseDto<Habitacion> response = new ResponseDto<>();
+			List<String> mensaje= new ArrayList<>();
+		if (!service.findByDisponible(false).isEmpty()){
+			response.setEstado(true);
+			mensaje.add("Estas son las habitaciones disponibles");
+			response.setMessage(mensaje);
+			response.setData(null);
+		
+			
+			ResponseEntity<ResponseDto> finalResponse = new ResponseEntity<>(response,HttpStatus.OK);
+			
+			//Finalmente retornamos
+			return finalResponse;
+			
+		}  else {
+			response.setEstado(false);
+			mensaje.add("No existen habitaciones disponibles");
+			response.setMessage(mensaje);
+			response.setData(null);
+		
+			ResponseEntity<ResponseDto> finalResponse = new ResponseEntity<>(response,HttpStatus.OK);
+			
+			//Finalmente retornamos
+			return finalResponse;
+			
+		}
+		  
+
+	}
 	
 	}
