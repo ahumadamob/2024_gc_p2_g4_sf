@@ -15,6 +15,7 @@ import jakarta.persistence.ManyToMany;
 @Entity
 
 public class Empleado {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
